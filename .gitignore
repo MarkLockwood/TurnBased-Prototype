@@ -70,3 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Too Large For GitHub
+TurnBased-Prototype/Library/PackageCache/com.unity.burst@1.7.3/.Runtime/hostmac/lld
+TurnBased-Prototype/Library/PackageCache/com.unity.burst@1.7.3/.Runtime/libburst-llvm-12.dylib
