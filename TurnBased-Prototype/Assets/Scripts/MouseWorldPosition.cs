@@ -3,6 +3,9 @@ using UnityEngine;
 public class MouseWorldPosition : MonoBehaviour
 {
     private static MouseWorldPosition instance;
+
+    private static Vector3 lastPosition = Vector3.zero;
+
     [SerializeField] private LayerMask mousePlaneLayerMask;
 
     void Awake()
@@ -14,6 +17,10 @@ public class MouseWorldPosition : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, instance.mousePlaneLayerMask);
-        return raycastHit.point;
+        if (raycastHit.collider != null)
+        {
+            lastPosition = raycastHit.point;
+        }
+        return lastPosition;
     }
 }

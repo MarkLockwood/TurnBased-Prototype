@@ -14,9 +14,9 @@ public class Unit : MonoBehaviour
             transform.position += moveSpeed * Time.deltaTime * moveDirection;
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetMouseButtonDown(0))
         {
-            Move(new Vector3(4,0,4));
+            Move(MouseWorldPosition.GetPosition());
         }
     }
 
