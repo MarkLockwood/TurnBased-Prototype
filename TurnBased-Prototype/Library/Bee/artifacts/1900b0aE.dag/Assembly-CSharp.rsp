@@ -366,9 +366,16 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/Grid System/GridDebugObject.cs"
+"Assets/Scripts/Grid System/GridObject.cs"
+"Assets/Scripts/Grid System/GridPosition.cs"
+"Assets/Scripts/Grid System/GridSystem.cs"
+"Assets/Scripts/Grid System/GridSystemPositionTest.cs"
+"Assets/Scripts/LevelGrid.cs"
 "Assets/Scripts/MouseWorldPosition.cs"
 "Assets/Scripts/Unit.cs"
 "Assets/Scripts/UnitActionSystem.cs"
+"Assets/Scripts/UnitSelectedVisual.cs"
 -langversion:9.0
 
 /deterministic

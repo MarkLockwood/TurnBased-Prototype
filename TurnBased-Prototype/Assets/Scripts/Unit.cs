@@ -10,6 +10,8 @@ public class Unit : MonoBehaviour
     [SerializeField] private Animator unitAnimator;
     private Vector3 targetPosition;
 
+    private GridPosition gridPosition;
+
     static int _isWalkingHash;
 
     void Awake()
@@ -20,6 +22,8 @@ public class Unit : MonoBehaviour
     void Start() 
     {
         _isWalkingHash = Animator.StringToHash("IsWalking");
+        gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
     }
     
     void Update() 
@@ -42,6 +46,14 @@ public class Unit : MonoBehaviour
         else
         {
             unitAnimator.SetBool(_isWalkingHash, false);
+        }
+
+        GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        if (newGridPosition != gridPosition)
+        {
+            // Unit Position Has Changed:
+            LevelGrid.Instance.UnitMovedGridPosition(this, gridPosition, newGridPosition);
+            gridPosition = newGridPosition;
         }
     }
 
