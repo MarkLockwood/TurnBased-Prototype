@@ -8,20 +8,15 @@ public class MoveAction : BaseAction
     [SerializeField] float stoppingDistance = .1f;
     [SerializeField] float rotateSpeed = 10f;
     [SerializeField] int maxMoveDistance = 4;
-    [SerializeField] private Animator unitAnimator;
     private Vector3 targetPosition;
 
-    static int _isWalkingHash;
+    public event EventHandler OnStartMoving;
+    public event EventHandler OnStopMoving;
 
     protected override void Awake()
     {
         base.Awake();
         targetPosition = transform.position;
-    }
-
-    void Start()
-    {
-        _isWalkingHash = Animator.StringToHash("IsWalking");
     }
 
     void Update()
@@ -43,12 +38,10 @@ public class MoveAction : BaseAction
             Quaternion currentRotation = transform.localRotation;
             Quaternion newRotation = Quaternion.LookRotation(moveDirection);
             transform.localRotation = Quaternion.Slerp(currentRotation, newRotation, Time.deltaTime * rotateSpeed);
-
-            unitAnimator.SetBool(_isWalkingHash, true);
         }
         else
         {
-            unitAnimator.SetBool(_isWalkingHash, false);
+            OnStopMoving?.Invoke(this, EventArgs.Empty);
             ActionComplete();
         }
     }
@@ -57,6 +50,8 @@ public class MoveAction : BaseAction
     {
         ActionStart(onActionComplete);
         this.targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+
+        OnStartMoving?.Invoke(this, EventArgs.Empty);
     }
 
     public override List<GridPosition> GetValidActionGridPositionList()

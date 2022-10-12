@@ -373,6 +373,7 @@
 "Assets/Scripts/Actions/MoveAction.cs"
 "Assets/Scripts/Actions/ShootAction.cs"
 "Assets/Scripts/Actions/SpinAction.cs"
+"Assets/Scripts/BulletProjectile.cs"
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/EnemyAI.cs"
 "Assets/Scripts/Grid System/GridDebugObject.cs"
@@ -390,6 +391,7 @@
 "Assets/Scripts/UI/UnitActionSystemUI.cs"
 "Assets/Scripts/Unit.cs"
 "Assets/Scripts/UnitActionSystem.cs"
+"Assets/Scripts/UnitAnimator.cs"
 "Assets/Scripts/UnitSelectedVisual.cs"
 -langversion:9.0
 

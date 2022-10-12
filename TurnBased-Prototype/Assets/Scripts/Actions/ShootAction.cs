@@ -18,6 +18,13 @@ public class ShootAction : BaseAction
 
     private bool canShootBullet;
 
+    public event EventHandler<OnShootEventArgs> OnShoot;
+    public class OnShootEventArgs : EventArgs
+    {
+        public Unit targetUnit;
+        public Unit shootingUnit;
+    }
+
     void Update()
     {
         if (!isActive)
@@ -79,6 +86,7 @@ public class ShootAction : BaseAction
 
     private void Shoot()
     {
+        OnShoot?.Invoke(this, new OnShootEventArgs {targetUnit = targetUnit, shootingUnit = unit});
         targetUnit.Damage();
     }
 
