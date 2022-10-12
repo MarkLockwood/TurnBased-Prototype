@@ -382,6 +382,7 @@
 "Assets/Scripts/Grid System/GridSystem.cs"
 "Assets/Scripts/Grid System/GridSystemVisual.cs"
 "Assets/Scripts/Grid System/GridSystemVisualObject.cs"
+"Assets/Scripts/HealthSystem.cs"
 "Assets/Scripts/LevelGrid.cs"
 "Assets/Scripts/MouseWorldPosition.cs"
 "Assets/Scripts/TurnSystem.cs"
@@ -392,6 +393,8 @@
 "Assets/Scripts/Unit.cs"
 "Assets/Scripts/UnitActionSystem.cs"
 "Assets/Scripts/UnitAnimator.cs"
+"Assets/Scripts/UnitRagdoll.cs"
+"Assets/Scripts/UnitRagdollSpawner.cs"
 "Assets/Scripts/UnitSelectedVisual.cs"
 -langversion:9.0
 

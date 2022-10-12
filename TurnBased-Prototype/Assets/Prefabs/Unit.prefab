@@ -138,10 +138,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8824965341266219204}
   - component: {fileID: 8824965341266219227}
+  - component: {fileID: 8150278247010637929}
   - component: {fileID: 5022830771796006309}
   - component: {fileID: 5193738827300985749}
   - component: {fileID: 4633774443124006329}
   - component: {fileID: 3097614722211103913}
+  - component: {fileID: 2139823500069389213}
   - component: {fileID: 4688055739880151627}
   m_Layer: 7
   m_Name: Unit
@@ -180,6 +182,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
+--- !u!114 &8150278247010637929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824965341266219205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbaa636ef3e7e048b4160cbef5863fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!114 &5022830771796006309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +251,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e861a4b516c9d4e8a45da7d014e796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2139823500069389213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824965341266219205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c733c6851f51c4aba62befb2ab216b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 8824965341266219204, guid: 03a01c73f79a6964780c2c6aeabe78dd,
+    type: 3}
+  originalRootBone: {fileID: 8820642800440278033}
 --- !u!65 &4688055739880151627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -654,6 +684,12 @@ PrefabInstance:
 --- !u!4 &8820534161228310539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274,
+    type: 3}
+  m_PrefabInstance: {fileID: 8824965341921453899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8820642800440278033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4966341056781146, guid: 2f3e27eecb190e44a9af50723c394274,
     type: 3}
   m_PrefabInstance: {fileID: 8824965341921453899}
   m_PrefabAsset: {fileID: 0}
