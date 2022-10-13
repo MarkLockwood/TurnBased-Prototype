@@ -375,6 +375,7 @@
 "Assets/Scripts/Actions/SpinAction.cs"
 "Assets/Scripts/BulletProjectile.cs"
 "Assets/Scripts/CameraController.cs"
+"Assets/Scripts/CameraManager.cs"
 "Assets/Scripts/EnemyAI.cs"
 "Assets/Scripts/Grid System/GridDebugObject.cs"
 "Assets/Scripts/Grid System/GridObject.cs"
@@ -384,6 +385,7 @@
 "Assets/Scripts/Grid System/GridSystemVisualObject.cs"
 "Assets/Scripts/HealthSystem.cs"
 "Assets/Scripts/LevelGrid.cs"
+"Assets/Scripts/LookAtCamera.cs"
 "Assets/Scripts/MouseWorldPosition.cs"
 "Assets/Scripts/TurnSystem.cs"
 "Assets/Scripts/UI/ActionBusyUI.cs"
@@ -396,6 +398,7 @@
 "Assets/Scripts/UnitRagdoll.cs"
 "Assets/Scripts/UnitRagdollSpawner.cs"
 "Assets/Scripts/UnitSelectedVisual.cs"
+"Assets/Scripts/UnitWorldUI.cs"
 -langversion:9.0
 
 /deterministic
