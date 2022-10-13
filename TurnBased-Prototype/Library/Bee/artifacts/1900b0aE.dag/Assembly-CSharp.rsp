@@ -395,6 +395,7 @@
 "Assets/Scripts/Unit.cs"
 "Assets/Scripts/UnitActionSystem.cs"
 "Assets/Scripts/UnitAnimator.cs"
+"Assets/Scripts/UnitManager.cs"
 "Assets/Scripts/UnitRagdoll.cs"
 "Assets/Scripts/UnitRagdollSpawner.cs"
 "Assets/Scripts/UnitSelectedVisual.cs"

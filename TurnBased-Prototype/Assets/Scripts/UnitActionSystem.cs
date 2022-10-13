@@ -40,25 +40,34 @@ public class UnitActionSystem : MonoBehaviour
         if (isBusy) { return; }
         if (!TurnSystem.Instance.IsPlayerTurn()) { return; }
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
-        if (TryHandleUnitSelection()) { return; }
+        // Try Getting Unit That Was Clicked.
+        if (TryGetClickedUnit(out Unit clickedUnit))
+        {
+            // Clicked On A Player Unit.
+            if (TryHandlePlayerUnitClicked(clickedUnit)) { return; }
+            // Clicked On An Enemy Unit.
+            if (TryHandleEnemyUnitClicked(clickedUnit)) { return; }
+        }
         HandleSelectedAction();
     }
 
     private void HandleSelectedAction()
     {
+        GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorldPosition.GetPosition());
+        HandleSelectedAction(mouseGridPosition);
+    }
+
+    private void HandleSelectedAction(GridPosition gridPosition)
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorldPosition.GetPosition());
+            if (!selectedAction.IsValidActionGridPosition(gridPosition)) { return; }
+            if (!selectedUnit.TrySpendActionPointsToTakeAction(selectedAction)) { return; }
 
-            if (selectedAction.IsValidActionGridPosition(mouseGridPosition))
-            {
-                if (selectedUnit.TrySpendActionPointsToTakeAction(selectedAction))
-                {
-                    SetBusy();
-                    selectedAction.TakeAction(mouseGridPosition, ClearBusy);
-                    OnActionStarted?.Invoke(this, EventArgs.Empty);
-                }
-            }
+            SetBusy();
+            selectedAction.TakeAction(gridPosition, ClearBusy);
+
+            OnActionStarted?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -74,31 +83,41 @@ public class UnitActionSystem : MonoBehaviour
         OnBusyChanged?.Invoke(this, isBusy);
     }
 
-    private bool TryHandleUnitSelection()
+    private bool TryGetClickedUnit(out Unit clickedUnit)
     {
+        clickedUnit = default;
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayerMask))
             {
-                if (raycastHit.transform.TryGetComponent<Unit>(out Unit unit))
+                if (raycastHit.transform.TryGetComponent<Unit>(out clickedUnit))
                 {
-                    if (unit == selectedUnit)
-                    {
-                        // This Unit Is Already Selected
-                        return false;
-                    }
-                    if (unit.IsEnemy())
-                    {
-                        // This Unit Is An Enemy
-                        return false;
-                    }
-                    SetSelectedUnit(unit);
+                    // A Unit Was Clicked On.
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private bool TryHandlePlayerUnitClicked(Unit clickedUnit)
+    {
+        // Unit Is Already Selected.
+        if (clickedUnit == selectedUnit) { return false; }
+        // Unit Is An Enemy.
+        if (clickedUnit.IsEnemy()) { return false; }
+        SetSelectedUnit(clickedUnit);
+        return true;
+    }
+
+    private bool TryHandleEnemyUnitClicked(Unit clickedUnit)
+    {
+        // Clicked On A Player Unit.
+        if (!clickedUnit.IsEnemy()) { return false; }
+        var enemyGridPosition = clickedUnit.GetGridPosition();
+        HandleSelectedAction(enemyGridPosition);
+        return true;
     }
 
     private void SetSelectedUnit(Unit unit)
