@@ -377,6 +377,7 @@
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/CameraManager.cs"
 "Assets/Scripts/EnemyAI.cs"
+"Assets/Scripts/EnemyAIAction.cs"
 "Assets/Scripts/Grid System/GridDebugObject.cs"
 "Assets/Scripts/Grid System/GridObject.cs"
 "Assets/Scripts/Grid System/GridPosition.cs"

@@ -42,4 +42,10 @@ public class HealthSystem : MonoBehaviour
     {
         return (float)health / healthMax;
     }
+
+    public float AttackScore()
+    {
+        float unitPerHealthPoint = 100/healthMax;  // the higher the health, the lower this score will be
+        return (healthMax-health) * unitPerHealthPoint + unitPerHealthPoint;
+    }
 }
