@@ -114,6 +114,13 @@ public class EnemyAI : MonoBehaviour
         if (bestEnemyAIAction != null && enemyUnit.TrySpendActionPointsToTakeAction(bestBaseAction))
         {
             bestBaseAction.TakeAction(bestEnemyAIAction.gridPosition, onEnemyAIActionComplete);
+            
+            // Debug Code? May Remove Later:
+            if (bestEnemyAIAction.actionValue == 0)
+            {
+            TurnSystem.Instance.NextTurn();
+            }
+            
             return true;
         }
         else
