@@ -27,6 +27,7 @@ public class SpinAction : BaseAction
     {
         List<GridPosition> validGridPositionList = new List<GridPosition>();
         GridPosition unitGridPosition = unit.GetGridPosition();
+
         return new List<GridPosition> { unitGridPosition };
     }
 

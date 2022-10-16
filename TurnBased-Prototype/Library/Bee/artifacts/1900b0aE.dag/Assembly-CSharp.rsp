@@ -118,6 +118,7 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
+-define:PROBUILDER_EXPERIMENTAL_FEATURES
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
@@ -339,6 +340,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.ProBuilder.AddOns.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.ProBuilder.AssetIdRemapUtility.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.ProBuilder.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.ProBuilder.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipeline.Universal.ShaderLibrary.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Runtime.ref.dll"
@@ -377,6 +382,7 @@
 "Assets/Scripts/BulletProjectile.cs"
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/CameraManager.cs"
+"Assets/Scripts/DestructibleCrate.cs"
 "Assets/Scripts/EnemyAI.cs"
 "Assets/Scripts/EnemyAIAction.cs"
 "Assets/Scripts/GrenadeProjectile.cs"
@@ -392,6 +398,7 @@
 "Assets/Scripts/MouseWorldPosition.cs"
 "Assets/Scripts/Pathfinding.cs"
 "Assets/Scripts/PathfindingGridDebugObject.cs"
+"Assets/Scripts/PathfindingUpdater.cs"
 "Assets/Scripts/PathNode.cs"
 "Assets/Scripts/ScreenShake.cs"
 "Assets/Scripts/ScreenShakeActions.cs"
@@ -408,6 +415,7 @@
 "Assets/Scripts/UnitRagdollSpawner.cs"
 "Assets/Scripts/UnitSelectedVisual.cs"
 "Assets/Scripts/UnitWorldUI.cs"
+"Assets/Scripts/UpdatePathfinding.cs"
 -langversion:9.0
 
 /deterministic

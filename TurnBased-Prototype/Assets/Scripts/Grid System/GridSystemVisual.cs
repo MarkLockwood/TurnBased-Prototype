@@ -15,10 +15,13 @@ public class GridSystemVisual : MonoBehaviour
     public enum GridVisualType
     {
         White,
+        WhiteSoft,
         Blue,
+        BlueSoft,
         Red,
         RedSoft,
-        Yellow
+        Yellow,
+        YellowSoft
     }
 
     [SerializeField] private Transform gridSystemVisualObjectPrefab;
@@ -52,6 +55,7 @@ public class GridSystemVisual : MonoBehaviour
             }
         }
 
+        UnitActionSystem.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
         UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
         Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
@@ -64,6 +68,11 @@ public class GridSystemVisual : MonoBehaviour
     }
 
     private void LevelGrid_OnAnyUnitMovedGridPosition(object sender, EventArgs e)
+    {
+        UpdateGridVisual();
+    }
+
+    private void UnitActionSystem_OnActionStarted(object sender, EventArgs e)
     {
         UpdateGridVisual();
     }
@@ -126,7 +135,7 @@ public class GridSystemVisual : MonoBehaviour
         }
     }
 
-    private void UpdateGridVisual()
+    public void UpdateGridVisual()
     {
         HideAllGridPositions();
         Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
@@ -138,13 +147,28 @@ public class GridSystemVisual : MonoBehaviour
             default: 
             case MoveAction moveAction:
                 gridVisualType = GridVisualType.White;
+                if (selectedUnit.GetActionPoints() == 0)
+                {
+                    gridVisualType = GridVisualType.WhiteSoft;
+                }
                 break;
             case SpinAction spinAction:
                 gridVisualType = GridVisualType.Blue;
+                if (selectedUnit.GetActionPoints() == 0)
+                {
+                    gridVisualType = GridVisualType.BlueSoft;
+                }
                 break;
             case ShootAction shootAction:
                 gridVisualType = GridVisualType.Red;
                 ShowGridPositionRange(selectedUnit.GetGridPosition(), shootAction.GetMaxShootDistance(), GridVisualType.RedSoft);
+                break;
+            case GrenadeAction grenadeAction:
+                gridVisualType = GridVisualType.Yellow;
+                if (selectedUnit.GetActionPoints() == 0)
+                {
+                    gridVisualType = GridVisualType.YellowSoft;
+                }
                 break;
         }
         ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);

@@ -144,6 +144,11 @@ public class ShootAction : BaseAction
                     continue;
                 }
 
+                if (unit.GetActionPoints() == 0)
+                {
+                    continue;
+                }
+
                 validGridPositionList.Add(testGridPosition);
             }
         }
