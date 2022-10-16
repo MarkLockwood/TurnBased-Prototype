@@ -379,6 +379,7 @@
 "Assets/Scripts/Actions/MoveAction.cs"
 "Assets/Scripts/Actions/ShootAction.cs"
 "Assets/Scripts/Actions/SpinAction.cs"
+"Assets/Scripts/Actions/SwordAction.cs"
 "Assets/Scripts/BulletProjectile.cs"
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/CameraManager.cs"
