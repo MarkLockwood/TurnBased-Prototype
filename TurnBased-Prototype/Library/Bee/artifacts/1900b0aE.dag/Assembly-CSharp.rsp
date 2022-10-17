@@ -117,6 +117,7 @@
 -define:ENABLE_TERRAIN
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
+-define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:PROBUILDER_EXPERIMENTAL_FEATURES
 -define:CSHARP_7_OR_LATER
@@ -337,6 +338,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.Sprite.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
@@ -374,6 +376,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/PlayerInputActions.cs"
 "Assets/Scripts/Actions/BaseAction.cs"
 "Assets/Scripts/Actions/GrenadeAction.cs"
 "Assets/Scripts/Actions/InteractAction.cs"
@@ -397,6 +400,7 @@
 "Assets/Scripts/Grid System/GridSystemVisualObject.cs"
 "Assets/Scripts/HealthSystem.cs"
 "Assets/Scripts/IInteractable.cs"
+"Assets/Scripts/InputManager.cs"
 "Assets/Scripts/InteractSphere.cs"
 "Assets/Scripts/LevelGrid.cs"
 "Assets/Scripts/LookAtCamera.cs"
