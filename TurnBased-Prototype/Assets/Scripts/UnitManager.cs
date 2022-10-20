@@ -63,12 +63,18 @@ public class UnitManager : MonoBehaviour
         }
         else
         {
+            friendlyUnitList.Remove(unit);
             if (unit == UnitActionSystem.Instance.GetSelectedUnit())
             {
-                UnitActionSystem.Instance.SetSelectedUnit(friendlyUnitList[0]);
-                // Add "Game Over".
+                if (friendlyUnitList.Count > 0)
+                {
+                    UnitActionSystem.Instance.SetSelectedUnit(friendlyUnitList[0]);
+                }
+                else
+                {
+                    //Game Over
+                }
             }
-            friendlyUnitList.Remove(unit);
         }
     }
 

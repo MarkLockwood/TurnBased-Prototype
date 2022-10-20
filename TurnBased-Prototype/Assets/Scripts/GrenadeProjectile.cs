@@ -41,7 +41,11 @@ public class GrenadeProjectile : MonoBehaviour
             {
                 if (collider.TryGetComponent<Unit>(out Unit targetUnit))
                 {
-                    targetUnit.Damage(30);
+                    //targetUnit.Damage(30);
+                    float damageDistanceNormalized = Vector3.Distance(collider.transform.position, targetPosition) /  damageRadius;
+                    int rangedDamage =  Mathf.RoundToInt(Mathf.Lerp(50f, 25f, damageDistanceNormalized));
+                    targetUnit.Damage(rangedDamage);
+                    Debug.Log(rangedDamage);
                 }
                 if (collider.TryGetComponent<DestructibleCrate>(out DestructibleCrate destructibleCrate))
                 {

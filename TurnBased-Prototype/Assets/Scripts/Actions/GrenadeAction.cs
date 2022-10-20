@@ -5,7 +5,8 @@ using UnityEngine;
 public class GrenadeAction : BaseAction
 {
     [SerializeField] private Transform grenadeProjectilePrefab;
-    private int maxThrowDistance = 7;
+    [SerializeField] private int maxThrowDistance = 7;
+    [SerializeField] private LayerMask obstacleLayerMask;
 
     void Update()
     {
@@ -45,6 +46,10 @@ public class GrenadeAction : BaseAction
                 {
                     continue;
                 }
+                if (ObstacleInTheWay(unitGridPosition, testGridPosition))
+                {
+                    continue;
+                }
 
                 validGridPositionList.Add(testGridPosition);
             }
@@ -65,5 +70,22 @@ public class GrenadeAction : BaseAction
     private void OnGrenadeBehaviourComplete()
     {
         ActionComplete();
+    }
+
+    private bool ObstacleInTheWay(GridPosition unitGridPosition, GridPosition targetGridPosition)
+    {
+        // Get the unit world position
+        var unitWorldPosition = LevelGrid.Instance.GetWorldPosition(unitGridPosition);
+        // Get the target world position
+        var targetWorldPosition = LevelGrid.Instance.GetWorldPosition(targetGridPosition);
+        // Get the direction to the target
+        var directionToTarget = (targetWorldPosition - unitWorldPosition).normalized;
+        // Get the distance to the target
+        var distanceToTarget = Vector3.Distance(unitWorldPosition, targetWorldPosition);
+        // Create the ray - with height offset
+        var offset = Vector3.up * 1f; // <- magic number. sorry
+        var ray = new Ray(unitWorldPosition + offset, directionToTarget);
+        // Check if there is an obstacle in the way and return
+        return Physics.Raycast(ray, distanceToTarget, obstacleLayerMask);
     }
 }

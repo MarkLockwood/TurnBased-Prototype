@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class BaseAction : MonoBehaviour
 {
+    // Event: Whenever An Action Is Started.
     public static event EventHandler OnAnyActionStarted;
+    // Event: Whenever An Action Is Finshed.
     public static event EventHandler OnAnyActionCompleted;
 
     protected Unit unit;
@@ -30,6 +32,7 @@ public abstract class BaseAction : MonoBehaviour
 
     public virtual int GetActionPointsCost()
     {
+        // Base Cost = 1 AP, Can Be Overwritten On A Per Action Basis.
         return 1;
     }
 
@@ -67,6 +70,7 @@ public abstract class BaseAction : MonoBehaviour
 
         if (enemyAIActionList.Count > 0)
         {
+            // Returns Best Possible Enemy AI Action Based On Remaining AP.
             enemyAIActionList.Sort((EnemyAIAction a, EnemyAIAction b) => b.actionValue - a.actionValue);
             return enemyAIActionList[0];
         }
