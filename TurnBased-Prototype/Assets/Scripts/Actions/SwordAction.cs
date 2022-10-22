@@ -22,6 +22,14 @@ public class SwordAction : BaseAction
 
     private Unit targetUnit;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip swordSwing;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (!isActive) { return; }
@@ -53,6 +61,7 @@ public class SwordAction : BaseAction
                 float afterHitStateTime = 0.5f;
                 stateTimer = afterHitStateTime;
                 targetUnit.Damage(100);
+                PlayAudio();
                 OnAnySwordHit.Invoke(this, EventArgs.Empty);
                 break;
             case State.SwingingSwordAfterHit:
@@ -131,5 +140,11 @@ public class SwordAction : BaseAction
     public int GetMaxSwordDistance()
     {
         return maxSwordDistance;
+    }
+
+    private void PlayAudio()
+    {
+        audioSource.clip = swordSwing;
+        audioSource.PlayOneShot(swordSwing);
     }
 }

@@ -82,6 +82,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  grenadeExplosion: {fileID: 8300000, guid: d9edc9e856c60f147a747c596b80771e, type: 3}
 --- !u!1 &594002598972618626
 GameObject:
   m_ObjectHideFlags: 0

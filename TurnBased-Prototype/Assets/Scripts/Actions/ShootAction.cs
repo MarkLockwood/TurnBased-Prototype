@@ -28,6 +28,14 @@ public class ShootAction : BaseAction
         public Unit shootingUnit;
     }
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip gunShot;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (!isActive)
@@ -91,6 +99,7 @@ public class ShootAction : BaseAction
     {
         OnAnyShoot?.Invoke(this, new OnShootEventArgs {targetUnit = targetUnit, shootingUnit = unit});
         OnShoot?.Invoke(this, new OnShootEventArgs {targetUnit = targetUnit, shootingUnit = unit});
+        PlayAudio();
         targetUnit.Damage(40);
     }
 
@@ -198,5 +207,11 @@ public class ShootAction : BaseAction
             //actionValue = 100 + Mathf.RoundToInt((1 - targetUnit.GetHealthNormalized()) * 100f),
             actionValue = 100 + Mathf.RoundToInt(targetUnit.GetAttackScore())
         };
+    }
+
+    private void PlayAudio()
+    {
+        audioSource.clip = gunShot;
+        audioSource.PlayOneShot(gunShot);
     }
 }

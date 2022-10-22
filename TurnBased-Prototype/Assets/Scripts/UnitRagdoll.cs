@@ -4,6 +4,16 @@ public class UnitRagdoll : MonoBehaviour
 {
     [SerializeField] private Transform ragdollRootBone;
 
+    [SerializeField] AudioClip[] deathSounds;
+
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        PlayDeathSound();
+    }
+
     public void Setup(Transform originalRootBone)
     {
         MatchaAllChildTransforms(originalRootBone, ragdollRootBone);
@@ -37,5 +47,15 @@ public class UnitRagdoll : MonoBehaviour
 
             ApplyExplosionToRagdoll(child, explosionForce, explosionPosition, explosionRange);
         }
+    }
+
+    private void PlayDeathSound()
+    {
+        int randomDeathSound = UnityEngine.Random.Range(1, deathSounds.Length);
+        audioSource.clip = deathSounds[randomDeathSound];
+        audioSource.PlayOneShot(audioSource.clip);
+
+        deathSounds[randomDeathSound] = deathSounds[0];
+        deathSounds[0] = audioSource.clip;
     }
 }

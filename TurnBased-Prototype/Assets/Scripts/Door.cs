@@ -14,6 +14,10 @@ public class Door : MonoBehaviour, IInteractable
     private bool isActive;
     private float timer;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip doorOpen;
+    [SerializeField] private AudioClip doorClose;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -21,6 +25,7 @@ public class Door : MonoBehaviour, IInteractable
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.SetInteractableAtGridPosition(gridPosition, this);
 
@@ -56,10 +61,12 @@ public class Door : MonoBehaviour, IInteractable
         if (isOpen)
         {
             CloseDoor();
+            PlayCloseDoorAudio();
         }
         else
         {
             OpenDoor();
+            PlayOpenDoorAudio();
         }
     }
 
@@ -78,5 +85,17 @@ public class Door : MonoBehaviour, IInteractable
         isOpen = false;
         animator.SetBool("IsOpen", isOpen);
         Pathfinding.Instance.SetIsWalkableGridPosition(gridPosition, false);
+    }
+
+    private void PlayOpenDoorAudio()
+    {
+        audioSource.clip = doorOpen;
+        audioSource.PlayOneShot(doorOpen);
+    }
+
+    private void PlayCloseDoorAudio()
+    {
+        audioSource.clip = doorClose;
+        audioSource.PlayOneShot(doorClose);
     }
 }
