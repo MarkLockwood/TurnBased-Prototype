@@ -9,6 +9,11 @@ public class UnitManager : MonoBehaviour
     private List<Unit> unitList;
     private List<Unit> friendlyUnitList;
     private List<Unit> enemyUnitList;
+    private List<Unit> killedEnemyUnitList;
+
+    public GameObject gameOverUI;
+
+    public static bool gameOver;
 
     void Awake()
     {
@@ -23,10 +28,12 @@ public class UnitManager : MonoBehaviour
         unitList = new List<Unit>();
         friendlyUnitList = new List<Unit>();
         enemyUnitList = new List<Unit>();
+        killedEnemyUnitList = new List<Unit>();
     }
 
     void Start()
     {
+        gameOver = false;
         Unit.OnAnyUnitSpawned += Unit_OnAnyUnitSpawned;
         Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
     }
@@ -60,6 +67,7 @@ public class UnitManager : MonoBehaviour
         if (unit.IsEnemy())
         {
             enemyUnitList.Remove(unit);
+            killedEnemyUnitList.Add(unit);
         }
         else
         {
@@ -72,7 +80,8 @@ public class UnitManager : MonoBehaviour
                 }
                 else
                 {
-                    //Game Over
+                    gameOver = true;
+                    gameOverUI.SetActive(true);
                 }
             }
         }
@@ -91,5 +100,15 @@ public class UnitManager : MonoBehaviour
     public List<Unit> GetEnemyUnitList()
     {
         return enemyUnitList;
+    }
+
+    public List<Unit> GetKilledEnemyUnitList()
+    {
+        return killedEnemyUnitList;
+    }
+
+    public bool IsGameOver()
+    {
+        return gameOver;
     }
 }

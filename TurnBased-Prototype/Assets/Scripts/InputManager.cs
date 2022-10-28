@@ -22,6 +22,15 @@ public class InputManager : MonoBehaviour
         playerInputActions.Player.Enable();
     }
 
+    void Update()
+    {
+        if (UnitManager.Instance.IsGameOver())
+        {
+            this.enabled = false;
+            return;
+        }
+    }
+
     public Vector2 GetMouseScreenPosition()
     {
         #if USE_NEW_INPUT_SYSTEM
