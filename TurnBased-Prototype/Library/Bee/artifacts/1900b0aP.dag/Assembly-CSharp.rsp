@@ -362,6 +362,7 @@
 "Assets/Scripts/LookAtCamera.cs"
 "Assets/Scripts/MenuController.cs"
 "Assets/Scripts/MouseWorldPosition.cs"
+"Assets/Scripts/NotDestroyedOnLoad.cs"
 "Assets/Scripts/Pathfinding.cs"
 "Assets/Scripts/PathfindingGridDebugObject.cs"
 "Assets/Scripts/PathfindingUpdater.cs"

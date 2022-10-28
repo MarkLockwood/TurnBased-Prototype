@@ -31,6 +31,14 @@ public class GridSystemVisual : MonoBehaviour
 
     private GridSystemVisualObject[,] gridSystemVisualObjectArray;
 
+    void OnDisable()
+    {
+        UnitActionSystem.Instance.OnActionStarted -= UnitActionSystem_OnActionStarted;
+        UnitActionSystem.Instance.OnSelectedActionChanged -= UnitActionSystem_OnSelectedActionChanged;
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
+        Unit.OnAnyUnitDead -= Unit_OnAnyUnitDead;
+    }
+
     void Awake()
     {
         if (Instance != null)

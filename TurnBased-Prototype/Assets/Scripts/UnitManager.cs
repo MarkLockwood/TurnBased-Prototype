@@ -15,6 +15,12 @@ public class UnitManager : MonoBehaviour
 
     public static bool gameOver;
 
+    void OnDisable()
+    {
+        Unit.OnAnyUnitSpawned -= Unit_OnAnyUnitSpawned;
+        Unit.OnAnyUnitDead -= Unit_OnAnyUnitDead;
+    }
+
     void Awake()
     {
         if (Instance != null)

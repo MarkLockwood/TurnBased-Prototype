@@ -13,6 +13,11 @@ public class EnemyAI : MonoBehaviour
     private State state;
     private float timer;
 
+    void OnDisable()
+    {
+        TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
+    }
+
     void Awake()
     {
         state = State.WaitingForEnemyTurn;

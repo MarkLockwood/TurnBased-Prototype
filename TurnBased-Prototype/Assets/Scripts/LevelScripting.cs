@@ -16,7 +16,12 @@ public class LevelScripting : MonoBehaviour
 
     private bool hasShownFirstHider = false;
 
-    private void Start()
+    void OnDisable()
+    {
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
+    }
+
+    void Start()
     {
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
         door1.OnDoorOpened += (object sender, EventArgs e) =>

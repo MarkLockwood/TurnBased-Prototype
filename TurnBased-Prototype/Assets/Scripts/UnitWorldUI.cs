@@ -10,6 +10,12 @@ public class UnitWorldUI : MonoBehaviour
     [SerializeField] private HealthSystem healthSystem;
     [SerializeField] private Image healthBarImage;
 
+    void OnDisable()
+    {
+        Unit.OnAnyActionPointsChanged -= Unit_OnAnyActionPointsChanged;
+        healthSystem.OnDamaged -= HealthSystem_OnDamaged;
+    }
+
     void Start()
     {
         Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;

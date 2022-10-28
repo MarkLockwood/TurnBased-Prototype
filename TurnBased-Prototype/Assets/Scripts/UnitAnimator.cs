@@ -14,6 +14,18 @@ public class UnitAnimator : MonoBehaviour
     static int _shootHash;
     static int _swordHash;
 
+    void OnDisable()
+    {
+        MoveAction moveAction = GetComponent<MoveAction>();
+        moveAction.OnStartMoving -= MoveAction_OnStartMoving;
+        moveAction.OnStopMoving -= MoveAction_OnStopMoving;
+        ShootAction shootAction = GetComponent<ShootAction>();
+        shootAction.OnShoot -= ShootAction_OnShoot;
+        SwordAction swordAction = GetComponent<SwordAction>();
+        swordAction.OnSwordActionStarted -= SwordAction_OnSwordActionStarted;
+        swordAction.OnSwordActionCompleted -= SwordAction_OnSwordActionCompleted;
+    }
+
     void Awake()
     {
         if (TryGetComponent<MoveAction>(out MoveAction moveAction))

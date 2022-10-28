@@ -9,6 +9,11 @@ public class TurnSystemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI turnNumberText;
     [SerializeField] private GameObject enemyTurnVisualGameObject;
 
+    void OnDisable()
+    {
+        TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
+    }
+
     void Start()
     {
         endTurnBtn.onClick.AddListener(() => { TurnSystem.Instance.NextTurn(); });

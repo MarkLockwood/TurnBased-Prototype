@@ -6,6 +6,13 @@ public class ScreenShakeActions : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip grenadeExplosion;
 
+    void OnDisable()
+    {
+        ShootAction.OnAnyShoot -= ShootAction_OnAnyShoot;
+        GrenadeProjectile.OnAnyGrenadeExploded -= GrenadeProjectile_OnAnyGrenadeExploded;
+        SwordAction.OnAnySwordHit -= SwordAction_OnAnySwordHit;
+    }
+
     void Start()
     {
         ShootAction.OnAnyShoot += ShootAction_OnAnyShoot;

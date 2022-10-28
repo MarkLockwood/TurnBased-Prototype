@@ -8,6 +8,11 @@ public class UnitRagdollSpawner : MonoBehaviour
 
     private HealthSystem healthSystem;
 
+    void OnDisable()
+    {
+        healthSystem.OnDead -= HealthSystem_OnDead;
+    }
+
     void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();

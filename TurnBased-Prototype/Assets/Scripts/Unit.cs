@@ -17,6 +17,12 @@ public class Unit : MonoBehaviour
 
     private int actionPoints = ACTION_POINTS_MAX;
 
+    void OnDisable()
+    {
+        TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
+        healthSystem.OnDead -= HealthSystem_OnDead;
+    }
+
     void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();

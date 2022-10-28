@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class ActionBusyUI : MonoBehaviour
 {
+    void OnDisable()
+    {
+        UnitActionSystem.Instance.OnBusyChanged -= UnitActionSystem_OnBusyChanged;
+    }
+
     void Start()
     {
         UnitActionSystem.Instance.OnBusyChanged += UnitActionSystem_OnBusyChanged;
