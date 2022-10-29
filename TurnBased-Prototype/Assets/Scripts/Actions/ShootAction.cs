@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShootAction : BaseAction
 {
@@ -31,9 +32,15 @@ public class ShootAction : BaseAction
     private AudioSource audioSource;
     [SerializeField] private AudioClip gunShot;
 
+    private Scene scene;
+
+    private bool TutorialShown = false;
+    [SerializeField] private GameObject tutorialUI;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        scene = SceneManager.GetActiveScene();
     }
 
     void Update()
@@ -101,6 +108,14 @@ public class ShootAction : BaseAction
         OnShoot?.Invoke(this, new OnShootEventArgs {targetUnit = targetUnit, shootingUnit = unit});
         PlayAudio();
         targetUnit.Damage(40);
+        if (TutorialShown != true)
+        {
+            if (scene.name == "TutorialScene")
+            {
+                TutorialShown = true;
+                tutorialUI.gameObject.SetActive(true);
+            }
+        }
     }
 
     public override List<GridPosition> GetValidActionGridPositionList()

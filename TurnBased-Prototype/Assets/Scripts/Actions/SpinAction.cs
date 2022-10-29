@@ -1,10 +1,21 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpinAction : BaseAction
 {
+    private Scene scene;
+
     private float totalSpinAmount;
+
+    private bool TutorialShown = false;
+    [SerializeField] private GameObject tutorialUI;
+
+    void Start()
+    {
+        scene = SceneManager.GetActiveScene();
+    }
 
     void Update()
     {
@@ -34,6 +45,14 @@ public class SpinAction : BaseAction
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         totalSpinAmount = 0f;
+        if (TutorialShown != true)
+            {
+                if (scene.name == "TutorialScene")
+                {
+                    TutorialShown = true;
+                    tutorialUI.gameObject.SetActive(true);
+                }
+            }
         ActionStart(onActionComplete);
     }
 

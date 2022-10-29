@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour
     private GridPosition gridPosition;
     private BaseAction[] baseActionArray;
 
-    private int actionPoints = ACTION_POINTS_MAX;
+    [SerializeField] private int actionPoints = ACTION_POINTS_MAX;
 
     void OnDisable()
     {

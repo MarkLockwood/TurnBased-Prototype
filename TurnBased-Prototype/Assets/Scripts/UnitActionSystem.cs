@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class UnitActionSystem : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class UnitActionSystem : MonoBehaviour
     [SerializeField] private Unit selectedUnit;
 
     private BaseAction selectedAction;
+
+    private bool TutorialShown = false;
+    [SerializeField] private GameObject tutorialUI;
+
+    private Scene scene;
 
     public event EventHandler OnSelectedUnitChanged;
     public event EventHandler OnSelectedActionChanged;
@@ -32,7 +38,12 @@ public class UnitActionSystem : MonoBehaviour
 
     void Start()
     {
-        SetSelectedUnit(selectedUnit);
+        if (selectedUnit != null)
+        {
+            SetSelectedUnit(selectedUnit);
+        }
+
+        scene = SceneManager.GetActiveScene();
     }
     
     void Update() 
@@ -48,7 +59,10 @@ public class UnitActionSystem : MonoBehaviour
             // Clicked On An Enemy Unit.
             if (TryHandleEnemyUnitClicked(clickedUnit)) { return; }
         }
-        HandleSelectedAction();
+        if (selectedUnit != null)
+        {
+            HandleSelectedAction();
+        }
     }
 
     private void HandleSelectedAction()
@@ -123,6 +137,14 @@ public class UnitActionSystem : MonoBehaviour
     public void SetSelectedUnit(Unit unit)
     {
         selectedUnit = unit;
+        if (TutorialShown != true)
+        {
+            if (scene.name == "TutorialScene")
+            {
+                TutorialShown = true;
+                tutorialUI.gameObject.SetActive(true);
+            }
+        }
         SetSelectedAction(unit.GetAction<MoveAction>());
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
     }

@@ -801,6 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
+  actionPoints: 3
 --- !u!114 &8150278247010637929
 MonoBehaviour:
   m_ObjectHideFlags: 0

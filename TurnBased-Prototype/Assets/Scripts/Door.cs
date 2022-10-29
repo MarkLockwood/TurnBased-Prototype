@@ -1,12 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour, IInteractable
 {
     public static event EventHandler OnAnyDoorOpened;
     public event EventHandler OnDoorOpened;
 
+    private Scene scene;
+
     [SerializeField] private bool isOpen;
+    
+    private bool TutorialShown = false;
+    [SerializeField] private GameObject tutorialUI;
 
     private GridPosition gridPosition;
     private Animator animator;
@@ -28,6 +34,8 @@ public class Door : MonoBehaviour, IInteractable
         audioSource = GetComponent<AudioSource>();
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.SetInteractableAtGridPosition(gridPosition, this);
+
+        scene = SceneManager.GetActiveScene();
 
         if (isOpen)
         {
@@ -62,6 +70,14 @@ public class Door : MonoBehaviour, IInteractable
         {
             CloseDoor();
             PlayCloseDoorAudio();
+            if (TutorialShown != true)
+            {
+                if (scene.name == "TutorialScene")
+                {
+                    TutorialShown = true;
+                    tutorialUI.gameObject.SetActive(true);
+                }
+            }
         }
         else
         {

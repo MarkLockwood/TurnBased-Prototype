@@ -36,6 +36,8 @@ public class UnitActionSystemUI : MonoBehaviour
         UpdateActionPoints();
         CreateUnitActionButtons();
         UpdateSelectedVisual();
+
+        actionPointsText.text = null;
     }
 
     private void CreateUnitActionButtons()
@@ -49,12 +51,15 @@ public class UnitActionSystemUI : MonoBehaviour
 
         Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
 
-        foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray())
+        if (selectedUnit != null)
         {
-            Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionButtonContainerTransform);
-            ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
-            actionButtonUI.SetBaseAction(baseAction);
-            actionButtonUIList.Add(actionButtonUI);
+            foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray())
+            {
+                Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionButtonContainerTransform);
+                ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
+                actionButtonUI.SetBaseAction(baseAction);
+                actionButtonUIList.Add(actionButtonUI);
+            }
         }
     }
 
@@ -85,8 +90,11 @@ public class UnitActionSystemUI : MonoBehaviour
 
     private void UpdateActionPoints()
     {
-        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
-        actionPointsText.text = "Action Points: " + selectedUnit.GetActionPoints();
+            Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+            if (selectedUnit != null)
+            {
+                actionPointsText.text = "Action Points: " + selectedUnit.GetActionPoints();
+            }
     }
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)

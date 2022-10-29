@@ -188,16 +188,22 @@ public class GridSystemVisual : MonoBehaviour
             default: 
             case MoveAction moveAction:
                 gridVisualType = GridVisualType.White;
-                if (selectedUnit.GetActionPoints() == 0)
+                if (selectedUnit != null)
                 {
-                    gridVisualType = GridVisualType.WhiteSoft;
+                    if (selectedUnit.GetActionPoints() == 0)
+                    {
+                        gridVisualType = GridVisualType.WhiteSoft;
+                    }
                 }
                 break;
             case SpinAction spinAction:
                 gridVisualType = GridVisualType.Blue;
-                if (selectedUnit.GetActionPoints() == 0)
+                if (selectedUnit != null)
                 {
-                    gridVisualType = GridVisualType.BlueSoft;
+                    if (selectedUnit.GetActionPoints() == 0)
+                    {
+                        gridVisualType = GridVisualType.BlueSoft;
+                    }
                 }
                 break;
             case ShootAction shootAction:
@@ -206,9 +212,12 @@ public class GridSystemVisual : MonoBehaviour
                 break;
             case GrenadeAction grenadeAction:
                 gridVisualType = GridVisualType.Yellow;
-                if (selectedUnit.GetActionPoints() == 0)
+                if (selectedUnit != null)
                 {
-                    gridVisualType = GridVisualType.YellowSoft;
+                    if (selectedUnit.GetActionPoints() == 0)
+                    {
+                        gridVisualType = GridVisualType.YellowSoft;
+                    }
                 }
                 break;
             case SwordAction swordAction:
@@ -219,7 +228,10 @@ public class GridSystemVisual : MonoBehaviour
                 gridVisualType = GridVisualType.Blue;
                 break;
         }
-        ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
+        if (selectedUnit != null)
+        {
+            ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
+        }
     }
 
     private void Unit_OnAnyUnitDead(object sender, EventArgs e)

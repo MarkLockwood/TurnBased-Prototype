@@ -420,6 +420,7 @@
 "Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/ScreenShake.cs"
 "Assets/Scripts/ScreenShakeActions.cs"
+"Assets/Scripts/Trigger.cs"
 "Assets/Scripts/TurnSystem.cs"
 "Assets/Scripts/UI/ActionBusyUI.cs"
 "Assets/Scripts/UI/ActionButtonUI.cs"

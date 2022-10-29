@@ -1,12 +1,22 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GrenadeAction : BaseAction
 {
     [SerializeField] private Transform grenadeProjectilePrefab;
     [SerializeField] private int maxThrowDistance = 7;
     [SerializeField] private LayerMask obstacleLayerMask;
+
+    private Scene scene;
+    private bool TutorialShown = false;
+    [SerializeField] private GameObject tutorialUI;
+
+    void Start()
+    {
+        scene = SceneManager.GetActiveScene();
+    }
 
     void Update()
     {
@@ -62,6 +72,15 @@ public class GrenadeAction : BaseAction
         Transform grenadeProjectileTransform = Instantiate(grenadeProjectilePrefab, unit.GetWorldPosition(), Quaternion.identity);
         GrenadeProjectile grenadeProjectile = grenadeProjectileTransform.GetComponent<GrenadeProjectile>();
         grenadeProjectile.Setup(gridPosition, OnGrenadeBehaviourComplete);
+
+        if (TutorialShown != true)
+        {
+            if (scene.name == "TutorialScene")
+            {
+                TutorialShown = true;
+                tutorialUI.gameObject.SetActive(true);
+            }
+        }
         
         //Debug.Log("GrenadeAction");
         ActionStart(onActionComplete);
