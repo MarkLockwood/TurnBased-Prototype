@@ -25,6 +25,11 @@ public class UnitActionSystem : MonoBehaviour
 
     private bool isBusy;
 
+    void OnDisable()
+    {
+        TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
+    }
+
     void Awake()
     {
         if (Instance != null)
@@ -43,9 +48,11 @@ public class UnitActionSystem : MonoBehaviour
             SetSelectedUnit(selectedUnit);
         }
 
+        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+
         scene = SceneManager.GetActiveScene();
     }
-    
+
     void Update() 
     {
         if (isBusy) { return; }
@@ -163,5 +170,11 @@ public class UnitActionSystem : MonoBehaviour
     public BaseAction GetSelectedAction()
     {
         return selectedAction;
+    }
+
+    private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+    {
+        selectedUnit = null;
+        OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
     }
 }

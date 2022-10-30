@@ -262,9 +262,6 @@ ScriptsOnlyBuild:
     methodName: SetActive
   - assembly: Assembly-CSharp
     fullTypeName: MenuController
-    methodName: ResetButton
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuController
     methodName: VolumeApply
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
@@ -299,12 +296,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: MenuController
     methodName: GameplayApply
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuController
-    methodName: SetQuality
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuController
-    methodName: SetFullScreen
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -314,9 +305,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: MenuController
     methodName: VolumeApply
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuController
-    methodName: SetBrightness
   - assembly: Assembly-CSharp
     fullTypeName: MenuController
     methodName: GameplayApply
@@ -335,9 +323,6 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuController
-    methodName: GraphicsApply
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -350,9 +335,6 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuController
-    methodName: SetResolution
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
     methodName: OnScrollbarClicked

@@ -36,6 +36,7 @@ public class GridSystemVisual : MonoBehaviour
         UnitActionSystem.Instance.OnActionStarted -= UnitActionSystem_OnActionStarted;
         UnitActionSystem.Instance.OnSelectedActionChanged -= UnitActionSystem_OnSelectedActionChanged;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition -= LevelGrid_OnAnyUnitMovedGridPosition;
+        TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
         Unit.OnAnyUnitDead -= Unit_OnAnyUnitDead;
     }
 
@@ -66,6 +67,7 @@ public class GridSystemVisual : MonoBehaviour
         UnitActionSystem.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
         UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
+        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
         UpdateGridVisual();
     }
@@ -251,5 +253,10 @@ public class GridSystemVisual : MonoBehaviour
 
         Debug.LogError("Could Not Find GridVisualTypeMaterial For GridVisualType " + gridVisualType);
         return null;
+    }
+
+    private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+    {
+        UpdateGridVisual();
     }
 }

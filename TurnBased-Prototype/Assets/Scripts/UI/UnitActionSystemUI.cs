@@ -99,7 +99,16 @@ public class UnitActionSystemUI : MonoBehaviour
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        UpdateActionPoints();
+        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        if (selectedUnit != null)
+        {
+            actionPointsText.gameObject.SetActive(true);
+            UpdateActionPoints();
+        }
+        else
+        {
+            actionPointsText.gameObject.SetActive(false);
+        }
     }
 
     private void Unit_OnAnyActionPointsChanged(object sender, EventArgs e)

@@ -4952,11 +4952,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 472557765}
     m_Modifications:
+    - target: {fileID: 1883027545411467998, guid: fb46cbf4647f4e6419a347dea21e62c2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097614722211103913, guid: fb46cbf4647f4e6419a347dea21e62c2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3097614722211103913, guid: fb46cbf4647f4e6419a347dea21e62c2,
         type: 3}
       propertyPath: tutorialUI
       value: 
       objectReference: {fileID: 204887240}
+    - target: {fileID: 3918690207522610723, guid: fb46cbf4647f4e6419a347dea21e62c2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3918690207522610723, guid: fb46cbf4647f4e6419a347dea21e62c2,
         type: 3}
       propertyPath: tutorialUI
@@ -4969,9 +4984,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193738827300985749, guid: fb46cbf4647f4e6419a347dea21e62c2,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193738827300985749, guid: fb46cbf4647f4e6419a347dea21e62c2,
+        type: 3}
       propertyPath: tutorialUI
       value: 
       objectReference: {fileID: 1169454134}
+    - target: {fileID: 5461678832842359469, guid: fb46cbf4647f4e6419a347dea21e62c2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5461678832842359469, guid: fb46cbf4647f4e6419a347dea21e62c2,
         type: 3}
       propertyPath: tutorialUI

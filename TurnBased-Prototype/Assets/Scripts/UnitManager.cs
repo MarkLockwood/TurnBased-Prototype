@@ -19,6 +19,12 @@ public class UnitManager : MonoBehaviour
     {
         Unit.OnAnyUnitSpawned -= Unit_OnAnyUnitSpawned;
         Unit.OnAnyUnitDead -= Unit_OnAnyUnitDead;
+        gameOver = false;
+    }
+
+    void OnEnable()
+    {
+        gameOver = false;
     }
 
     void Awake()
@@ -70,26 +76,26 @@ public class UnitManager : MonoBehaviour
 
         unitList.Remove(unit);
 
+        //Debug.Log(friendlyUnitList.Count);
+
         if (unit.IsEnemy())
         {
             enemyUnitList.Remove(unit);
             killedEnemyUnitList.Add(unit);
+            if (killedEnemyUnitList.Count == 12)
+            {
+                gameOver = true;
+                gameOverUI.SetActive(true);
+            }
         }
         else
         {
             friendlyUnitList.Remove(unit);
-            if (unit == UnitActionSystem.Instance.GetSelectedUnit())
+            if (friendlyUnitList.Count == 0)
             {
-                if (friendlyUnitList.Count > 0)
-                {
-                    UnitActionSystem.Instance.SetSelectedUnit(friendlyUnitList[0]);
-                }
-                else
-                {
-                    gameOver = true;
-                    gameOverUI.SetActive(true);
-                }
-            }
+                gameOver = true;
+                gameOverUI.SetActive(true);
+            }    
         }
     }
 
