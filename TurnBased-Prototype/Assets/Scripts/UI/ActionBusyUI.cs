@@ -7,6 +7,11 @@ public class ActionBusyUI : MonoBehaviour
         UnitActionSystem.Instance.OnBusyChanged -= UnitActionSystem_OnBusyChanged;
     }
 
+    void OnEnable()
+    {
+        UnitActionSystem.Instance.OnBusyChanged += UnitActionSystem_OnBusyChanged;
+    }
+
     void Start()
     {
         UnitActionSystem.Instance.OnBusyChanged += UnitActionSystem_OnBusyChanged;
@@ -27,10 +32,12 @@ public class ActionBusyUI : MonoBehaviour
     {
         if (isBusy)
         {
+            //Debug.Log("Showing");
             Show();
         }
         else
         {
+            //Debug.Log("Hiding");
             Hide();
         }
     }
